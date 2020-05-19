@@ -55,10 +55,10 @@ class Schema
     /**
      * Create a connection by ConnectionResolver.
      */
-    public function connection(string $name = 'default'): ConnectionInterface
+    public static function connection(string $name = 'default')
     {
         $container = ApplicationContext::getContainer();
         $resolver = $container->get(ConnectionResolverInterface::class);
-        return $resolver->connection($name);
+        return $resolver->connection($name)->getSchemaBuilder();
     }
 }
